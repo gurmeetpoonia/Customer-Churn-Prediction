@@ -11,7 +11,7 @@ st.title("Customer Churn Prediction System")
 col1, col2 = st.columns(2)
 
 with col1:
-    tenure = st.slider("Tenure (Months)", 0, 72, 12, 1)
+    tenure = st.slider("Tenure (Months)", 0, 72, 0, 1)
     internet = st.selectbox("Internet Service", ["Select","DSL", "Fiber optic", "No"])
     contract = st.selectbox("Contract Type", ["Select","Month-to-month", "One year", "Two year"])
     gender = st.selectbox("Gender", ["Select","Female", "Male"])
