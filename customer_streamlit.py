@@ -6,44 +6,26 @@ import joblib
 model = joblib.load("customer_churn_model.pkl")
 features=joblib.load("features.pkl")
 st.title("Customer Churn Prediction System")
-st.markdown("Fill all details before prediction ⬇️")
+#st.markdown("Fill all details before prediction ⬇️")
 
-tenure = st.slider("Tenure (Months)", 0, 72, 0, 1)
+col1, col2 = st.columns(2)
 
-monthly_charges = st.number_input("Monthly Charges", min_value=0.0, step=0.5 )
+with col1:
+    tenure = st.slider("Tenure (Months)", 0, 72, 12, 1)
+    internet = st.selectbox("Internet Service", ["Select","DSL", "Fiber optic", "No"])
+    contract = st.selectbox("Contract Type", ["Select","Month-to-month", "One year", "Two year"])
+    gender = st.selectbox("Gender", ["Select","Female", "Male"])
 
-total_charges = tenure * monthly_charges
+with col2:
+    monthly_charges = st.number_input("Monthly Charges", min_value=0.0, step=0.5)
+    payment = st.selectbox("Payment Method", ["Select","Credit Card", "Electronic Check", "Mailed Check"])
+    security = st.selectbox("Online Security", ["Select","No", "Yes"])
+    paperless = st.selectbox("Paperless Billing", ["Select","No", "Yes"])
 
+total_charges=tenure*monthly_charges
 st.metric("💰 Total Charges", f"{total_charges:.2f}")
-internet = st.selectbox(
-    "Internet Service",
-    [ "Select","DSL", "Fiber optic", "No"]
-)
 
-payment = st.selectbox(
-    "Payment Method",
-    ["Select","Credit Card", "Electronic Check", "Mailed Check"]
-)
 
-contract = st.selectbox(
-    "Contract Type",
-    ["Select","Month-to-month", "One year", "Two year"]
-)
-
-security = st.selectbox(
-    "Online Security",
-    ["Select","No", "Yes"]
-)
-
-gender = st.selectbox(
-    "Gender",
-    ["Select","Female", "Male"]
-)
-
-paperless = st.selectbox(
-    "Paperless Billing",
-    ["Select","No", "Yes"]
-)
 
 if st.button("Predict"):
 
