@@ -5,7 +5,7 @@ This project predicts whether a customer is likely to churn (leave the service) 
 ---
 
 ## 🚀 Live App
-[Click here to use the app](https://customer-churn-prediction-gkjw.streamlit.app/)
+👉 https://customer-churn-prediction-gkjw.streamlit.app/
 
 ---
 
